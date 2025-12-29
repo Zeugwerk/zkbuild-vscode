@@ -131,6 +131,3 @@ Before testing, make sure you have:
 - **Breakpoints not working**: Ensure the code is compiled and the debugger is attached
 - **Command not appearing**: Reload the Extension Development Host window (Ctrl+R or Cmd+R)
 
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details.
