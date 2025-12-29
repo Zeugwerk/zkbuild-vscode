@@ -14,11 +14,11 @@ A VS Code extension for building TwinCAT projects remotely using the Zeugwerk bu
 ## Requirements
 
 - VS Code 1.74.0 or higher
-- A `build.json` file in your workspace root with build configuration
+- A `.Zeugwerk/build.json` file in your workspace root with build configuration
 
 ## Configuration
 
-Create a `build.json` file in your workspace root with the following structure:
+Create a `.Zeugwerk/build.json` file in your workspace root with the following structure:
 
 ```json
 {
@@ -120,7 +120,7 @@ npm run watch
 
 Before testing, make sure you have:
 - [ ] A test TwinCAT project workspace
-- [ ] A `build.json` file in the workspace root with valid credentials
+- [ ] A `.Zeugwerk/build.json` file in the workspace root with valid credentials
 - [ ] The extension compiled (`npm run compile` or `npm run watch`)
 - [ ] The Extension Development Host window open (after pressing F5)
 
