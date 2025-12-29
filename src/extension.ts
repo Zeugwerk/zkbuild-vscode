@@ -666,6 +666,8 @@ export function activate(context: vscode.ExtensionContext) {
     
     const buildService = new BuildService(outputChannel, diagnosticCollection);
 
+    let isBuilding = false;
+
     const disposable = vscode.commands.registerCommand('zkbuild.build', async () => {
         const workspaceFolders = vscode.workspace.workspaceFolders;
         if (!workspaceFolders || workspaceFolders.length === 0) {
@@ -673,14 +675,27 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
 
-        if (workspaceFolders.length > 1) {
-            const selected = await vscode.window.showWorkspaceFolderPick();
-            if (!selected) {
-                return;
+        if (isBuilding) {
+            // Focus output if build is already running
+            outputChannel.show(true);
+            vscode.window.showInformationMessage('Build is already running...');
+            return;
+        }
+        
+        isBuilding = true;
+
+        try {
+            if (workspaceFolders.length > 1) {
+                const selected = await vscode.window.showWorkspaceFolderPick();
+                if (!selected) {
+                    return;
+                }
+                await buildService.build(selected);
+            } else {
+                await buildService.build(workspaceFolders[0]);
             }
-            await buildService.build(selected);
-        } else {
-            await buildService.build(workspaceFolders[0]);
+        } finally {
+            isBuilding = false;
         }
     });
 
