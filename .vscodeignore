@@ -5,5 +5,8 @@ tsconfig.json
 .gitignore
 *.md
 *.zip
-node_modules/**
+!node_modules/archiver/**
+!node_modules/adm-zip/**
+!node_modules/form-data/**
+!node_modules/ignore/**
 *.vsix

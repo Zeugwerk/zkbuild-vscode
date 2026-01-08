@@ -8,6 +8,7 @@ import ignore from 'ignore';
 import * as https from 'https';
 import * as crypto from 'crypto';
 import { IncomingMessage } from 'http';
+require("archiver")
 
 interface BuildConfig {
     tcversion?: string;
